@@ -1,1 +1,1 @@
-web: gunicorn Quantium-virtual-internship.app:app
+web: gunicorn app:app
