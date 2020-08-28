@@ -25,7 +25,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         
         <a class="navbar-brand" href="#">
-            <img src='site_regular_pics/quantium_logo.png' width="30" height="30">
+            <img src='static/site_regular_pics/quantium_logo.png' width="30" height="30">
             Quantium
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,13 +34,13 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav">
             <li class="nav-item active">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="{{ url_for('home')}}">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="module1.html">Module One</a>
+              <a class="nav-link" href="{{ url_for('module1')}}">Module One</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Module Two</a>
+              <a class="nav-link" href="{{ url_for('module2')}}">Module Two</a>
             </li>
             <!-- <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -65,15 +65,75 @@
       <br>
       <div class="container">
         <h3>Project Description</h3>
+        <br>
+        <h6>
+            Data Cleaning
+        </h6>
+        <table border="1" class="table table-dark">
+            <thead>
+              <tr style="text-align: right;">
+                <th></th>
+                <th>LYLTY_CARD_NBR</th>
+                <th>LIFESTAGE</th>
+                <th>PREMIUM_CUSTOMER</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th>0</th>
+                <td>1000</td>
+                <td>YOUNG SINGLES/COUPLES</td>
+                <td>Premium</td>
+              </tr>
+              <tr>
+                <th>1</th>
+                <td>1002</td>
+                <td>YOUNG SINGLES/COUPLES</td>
+                <td>Mainstream</td>
+              </tr>
+              <tr>
+                <th>2</th>
+                <td>1003</td>
+                <td>YOUNG FAMILIES</td>
+                <td>Budget</td>
+              </tr>
+              <tr>
+                <th>3</th>
+                <td>1004</td>
+                <td>OLDER SINGLES/COUPLES</td>
+                <td>Mainstream</td>
+              </tr>
+              <tr>
+                <th>4</th>
+                <td>1005</td>
+                <td>MIDAGE SINGLES/COUPLES</td>
+                <td>Mainstream</td>
+              </tr>
+            </tbody>
+          </table>
         <p>
-          We need to present a strategic recommendation to Julia that is supported by data which she can then use for 
-          the upcoming category review however to do so we need to analyse the data to understand the current 
-          purchasing trends and behaviours. The client is particularly interested in customer segments and their 
-          chip purchasing behaviour. Consider what metrics would help describe the customers’ purchasing behaviour.  
-          
+            First, I made sure all the data are in the correct data types. For instance, the date 
+            column was in excel style date format which I converted into %Y-%m-%d format for 
+            readability. I then checked if there are any null values in the dataset which there 
+            were none. The feature called “PROD_NAME” contained some information that could be 
+            split into their own respective columns. Using the values in the product name column, 
+            I extracted the Weight of the product as well as the Brand Name which is simply the 
+            first word of each value in the feature set. 
+        </p>
+        <p>
+            To handle outliers, I used the z-score approach on the total sales numbers and removed 
+            data points that have a z-score of over three and under negative three. In order to check 
+            for data consistency, I checked the unique values for each feature, and found that under 
+            brand names, there were many brands that were described in different names. For instance, 
+            “Natural” was also recorded as “ncc”, “Grainwaves” was also recorded as “Grain” or 
+            “Grnwves”,etc… I renamed all the unique values into consistent names for each brand.  
         </p>
         <br>
-        
+        <p>
+            The life stage feature identifies whether a customer has a family or not and what point 
+            in life they are at. For example, are their children in pre-school/primary/secondary 
+            school. 
+        </p>
       </div>
       
      

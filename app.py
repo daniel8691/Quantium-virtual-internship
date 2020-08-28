@@ -28,9 +28,19 @@ from flask_sqlalchemy import SQLAlchemy
 
 
 # create route that renders index.html template
-@app.route("/")
+@app.route("/home")
 def home():
     return render_template("index.html")
+
+
+@app.route("/module1")
+def module1():
+    return render_template("module1.html")
+
+
+@app.route("/module2")
+def module2():
+    return render_template("module2.html")
 
 
 # Query the database and send the jsonified results
