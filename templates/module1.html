@@ -19,12 +19,18 @@
     .text-center {
         text-align:center;
     }
+    .my-center {
+        display:block;
+        margin-left: auto;
+        margin-right: auto;
+        width:75%;
+    }
 </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="{{ url_for('home')}}">
             <img src='static/site_regular_pics/quantium_logo.png' width="30" height="30">
             Quantium
         </a>
@@ -56,26 +62,135 @@
         </div>
       </nav>
 
-      <br>
-      <div class='text-center'>
-        <h1>Quantium Virtual Internship</h1>
-      </div>
-      <hr>
-
-      <br>
-      <div class="container">
-        <h3>Project Description</h3>
+      <div class="jumbotron jumbotron-fluid m-xs-3 p-xs-1 m-sm-5 p-sm-5">
+        <h1 class="display-4">Data Preparation And Customer Analytics</h1>
         <br>
-        <h6>
-            Data Cleaning
-        </h6>
-        <table border="1" class="table table-dark">
-            <thead>
-              <tr style="text-align: right;">
+        <p class="lead">Data Cleaning</p>
+        <hr class="my-4">
+
+        <br>
+        <div style='width:100%; overflow:scroll'>
+            <table class="table">
+            <caption>Top five rows of the Transactions dataset (Cleaned)</caption>
+      
+                <thead class="thead-dark">
+                    <tr style="text-align: center;">
+                      <th></th>
+                      <th>index</th>
+                      <th>DATE</th>
+                      <th>STORE NBR</th>
+                      <th>LYLTY CARD NBR</th>
+                      <th>TXN ID</th>
+                      <th>PROD NBR</th>
+                      <th>PROD NAME</th>
+                      <th>BRAND NAME</th>
+                      <th>PROD SIZE</th>
+                      <th>PROD QTY</th>
+                      <th>TOT SALES</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th>0</th>
+                      <td>0</td>
+                      <td>2018-10-17</td>
+                      <td>1</td>
+                      <td>1000</td>
+                      <td>1</td>
+                      <td>5</td>
+                      <td>Natural chip        compny seasalt</td>
+                      <td>Natural</td>
+                      <td>175</td>
+                      <td>2</td>
+                      <td>6.0</td>
+                    </tr>
+                    <tr>
+                      <th>1</th>
+                      <td>1</td>
+                      <td>2019-05-14</td>
+                      <td>1</td>
+                      <td>1307</td>
+                      <td>348</td>
+                      <td>66</td>
+                      <td>CCS nacho cheese</td>
+                      <td>CCS</td>
+                      <td>175</td>
+                      <td>3</td>
+                      <td>6.3</td>
+                    </tr>
+                    <tr>
+                      <th>2</th>
+                      <td>2</td>
+                      <td>2019-05-20</td>
+                      <td>1</td>
+                      <td>1343</td>
+                      <td>383</td>
+                      <td>61</td>
+                      <td>Smiths crinkle cut  chips chicken</td>
+                      <td>Smiths</td>
+                      <td>170</td>
+                      <td>2</td>
+                      <td>2.9</td>
+                    </tr>
+                    <tr>
+                      <th>3</th>
+                      <td>3</td>
+                      <td>2018-08-17</td>
+                      <td>2</td>
+                      <td>2373</td>
+                      <td>974</td>
+                      <td>69</td>
+                      <td>Smiths chip thinly  s/cream&amp;onion</td>
+                      <td>Smiths</td>
+                      <td>175</td>
+                      <td>5</td>
+                      <td>15.0</td>
+                    </tr>
+                    <tr>
+                      <th>4</th>
+                      <td>4</td>
+                      <td>2018-08-18</td>
+                      <td>2</td>
+                      <td>2426</td>
+                      <td>1038</td>
+                      <td>108</td>
+                      <td>Kettle tortilla chpshny&amp;jlpno chili</td>
+                      <td>Kettle</td>
+                      <td>150</td>
+                      <td>3</td>
+                      <td>13.8</td>
+                    </tr>
+                  </tbody>
+                </table>
+            </div>
+            
+       
+        <p>
+            First, I made sure all the data are in the correct data types. For instance, the date 
+            column was in excel style date format which I converted into %Y-%m-%d format for 
+            readability. I then checked if there are any null values in the dataset which there 
+            were none. The feature called “PROD_NAME” contained some information that could be 
+            split into their own respective columns. Using the values in the product name column, 
+            I extracted the Weight of the product as well as the Brand Name which is simply the 
+            first word of each value in the feature set. 
+        </p>
+        <p>
+            To handle outliers, I used the z-score approach on the total sales numbers and removed 
+            data points that have a z-score of over three and under negative three. In order to check 
+            for data consistency, I checked the unique values for each feature, and found that under 
+            brand names, there were many brands that were described in different names. For instance, 
+            “Natural” was also recorded as “ncc”, “Grainwaves” was also recorded as “Grain” or 
+            “Grnwves”,etc… I renamed all the unique values into consistent names for each brand.  
+        </p>
+        <br>
+        <table class="table">
+            <caption>Top five rows of the Customer Behaviors dataset (Cleaned)</caption>
+            <thead class="thead-dark">
+              <tr style="text-align: center;">
                 <th></th>
-                <th>LYLTY_CARD_NBR</th>
+                <th>LYLTY CARD NBR</th>
                 <th>LIFESTAGE</th>
-                <th>PREMIUM_CUSTOMER</th>
+                <th>CUSTOMER SEGMENTS</th>
               </tr>
             </thead>
             <tbody>
@@ -112,29 +227,64 @@
             </tbody>
           </table>
         <p>
-            First, I made sure all the data are in the correct data types. For instance, the date 
-            column was in excel style date format which I converted into %Y-%m-%d format for 
-            readability. I then checked if there are any null values in the dataset which there 
-            were none. The feature called “PROD_NAME” contained some information that could be 
-            split into their own respective columns. Using the values in the product name column, 
-            I extracted the Weight of the product as well as the Brand Name which is simply the 
-            first word of each value in the feature set. 
+            The <b>Life Stage</b> feature identifies whether a customer has a family or not and what point 
+            in life they are at. For example, are their children in pre-school/primary/secondary 
+            school. The <b>Customer Segment</b> feature is the customer segmentation used to differentiate 
+            shoppers by the price point of products they buy and the types of products they buy. It is used 
+            to identify whether customers may spend more for quality or brand of whether they will purchase 
+            the cheapest options. 
+
         </p>
         <p>
-            To handle outliers, I used the z-score approach on the total sales numbers and removed 
-            data points that have a z-score of over three and under negative three. In order to check 
-            for data consistency, I checked the unique values for each feature, and found that under 
-            brand names, there were many brands that were described in different names. For instance, 
-            “Natural” was also recorded as “ncc”, “Grainwaves” was also recorded as “Grain” or 
-            “Grnwves”,etc… I renamed all the unique values into consistent names for each brand.  
+            Similar to what I did for the transactions dataset, I checked whether there are any null values, 
+            checked unique values, and minimum/maximum values for each feature with numeric data. Not much 
+            data cleaning was required for the customer behavior dataset and by plotting a simple bar chart, 
+            I can see that most of the customers are labelled “Mainstream” so this may be a factor to keep 
+            in mind, when deciding which customer segment to focus our attention on. 
+            <figure class="figure">
+                <img src="static/analysis_pics/customer_bahavior.png" class="figure-img img-fluid rounded" alt="...">
+                <figcaption class="figure-caption">A caption for the above image.</figcaption>
+              </figure>
         </p>
         <br>
+        <p class="lead">Data Analysis</p>
+        <hr class="my-4">
         <p>
-            The life stage feature identifies whether a customer has a family or not and what point 
-            in life they are at. For example, are their children in pre-school/primary/secondary 
-            school. 
+            To prepare for the analysis, I merged the two given datasets. Some key metrics I will focus on
+            for this analysis are:
+            <ul>
+                <li>
+                    Who spends the most on chips (total sales), describing customers by lifestage 
+                    and how premium their general purchasing behavior is
+                </li>
+                <li>
+                    How many customers are in each segment?
+                </li>
+                <li>
+                    How many chips are bought per customer by segment?
+                </li>
+                <li>
+                    What's the average chip price by customer segment?
+                </li>
+            </ul>
         </p>
+        <h6>Find Out Which Customer Segment Spends The Most On Chips</h6>
+
+        <figure class="figure">
+            <img src="static/analysis_pics/Lifestage_vs_totalsales.png" class="figure-img my-center rounded" alt="...">
+            <figcaption class="figure-caption my-center">A caption for the above image.</figcaption>
+          </figure>
+
+
+    
+
+
+
+        <!-- <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a> -->
       </div>
+      
+
+
       
      
 </body>
