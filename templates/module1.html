@@ -65,7 +65,7 @@
       <div class="jumbotron jumbotron-fluid m-xs-3 p-xs-1 m-sm-5 p-sm-5">
         <h1 class="display-4">Data Preparation And Customer Analytics</h1>
         <br>
-        <p class="lead">Data Cleaning</p>
+        <p class="lead text-center">Data Cleaning</p>
         <hr class="my-4">
 
         <br>
@@ -242,12 +242,12 @@
             I can see that most of the customers are labelled “Mainstream” so this may be a factor to keep 
             in mind, when deciding which customer segment to focus our attention on. 
             <figure class="figure">
-                <img src="static/analysis_pics/customer_bahavior.png" class="figure-img img-fluid rounded" alt="...">
-                <figcaption class="figure-caption">A caption for the above image.</figcaption>
+                <img src="static/analysis_pics/customerBahavior.png" class="figure-img img-fluid rounded" alt="...">
+                <!-- <figcaption class="figure-caption">A caption for the above image.</figcaption> -->
               </figure>
         </p>
         <br>
-        <p class="lead">Data Analysis</p>
+        <p class="lead text-center">Data Analysis</p>
         <hr class="my-4">
         <p>
             To prepare for the analysis, I merged the two given datasets. Some key metrics I will focus on
@@ -268,12 +268,73 @@
                 </li>
             </ul>
         </p>
+        <br>
         <h6>Find Out Which Customer Segment Spends The Most On Chips</h6>
 
         <figure class="figure">
-            <img src="static/analysis_pics/Lifestage_vs_totalsales.png" class="figure-img my-center rounded" alt="...">
-            <figcaption class="figure-caption my-center">A caption for the above image.</figcaption>
+            <img src="static/analysis_pics/Lifestage_vs_totalSales.png" class="figure-img my-center rounded" alt="...">
+            <!-- <figcaption class="figure-caption my-center">A caption for the above image.</figcaption> -->
           </figure>
+          <p>
+              Sales mostly came from the <i>Budget customers</i> from the "Older families" segment, and <i>mainstream customers</i> from 
+              the "young singles/couples" and "Retirees" segment.
+          </p>
+          <p>
+              Now check to see if the higher sales are caused by higher number of customers in the respective 
+              customer segment
+          </p>
+        <br>
+
+        <h6>Number of Customers In Each Customer Segment</h6>
+        <figure class="figure">
+            <img src="static/analysis_pics/Lifestage_vs_numberOfCustomers.png" class="figure-img my-center rounded" alt="...">
+            <!-- <figcaption class="figure-caption my-center">A caption for the above image.</figcaption> -->
+        </figure>
+        <p>
+            There are more <i>Mainstream customers</i> in "Young singles/couples" and "retirees" segments, which lead
+            to a higher total sales for the respective segments. The number <i>Budget customers</i> in the "Older Families" 
+            segment, however, was not a major driver of sales.
+            
+        </p>
+        <p>
+            Other factors that contribute to total sales could be units purchased. In other words, could we expect a higher
+            sales number for a specific customer segment just because each customer purchased more? I will visualize this in 
+            the following section.            
+        </p>
+        <br>
+        <h6>Number of Customers In Each Customer Segment</h6>
+        <figure class="figure">
+            <img src="static/analysis_pics/Lifestage_vs_purchasePercustomer.png" class="figure-img my-center rounded" alt="...">
+            <!-- <figcaption class="figure-caption my-center">A caption for the above image.</figcaption> -->
+        </figure>
+        <p>
+            From this graph, we can see that customers from the "older families" and "young families" in general buy more chips, 
+            averaging over four packs of chips per customer. 
+        </p>
+        <p>
+            Next we investigate the average price per unit for each customer segment as this is also a driver of total sales.
+        </p>
+        <br>
+        
+        <h6>Average Price Per Unit For Each Customer Segment</h6>
+        <figure class="figure">
+        
+            <img src="static/analysis_pics/Lifestage_vs_pricePerunit.png" class="figure-img my-center rounded" alt="...">
+            <!-- <figcaption class="figure-caption my-center">A caption for the above image.</figcaption> -->
+        </figure>
+
+
+
+
+
+        <p class="lead text-center">Conclusion</p>
+        <hr class="my-4">
+        <p>
+            Sales are the highest for Budget customers in the "Older Families" segment, mainstream customers in the "young singles/couples"
+            segment, and mainstream customers from the "Retirees" segment respectively. I later found out that the high sales numbers for (Mainstream, 
+            young singles/couples) and (Mainstream, Retirees) can be explained by these segments having more customers. 
+        </p>
+
 
 
     
