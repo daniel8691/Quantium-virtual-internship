@@ -28,6 +28,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 
 # create route that renders index.html template
+@app.route('/')
 @app.route("/home")
 def home():
     return render_template("index.html")
