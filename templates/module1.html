@@ -319,9 +319,34 @@
         <h6>Average Price Per Unit For Each Customer Segment</h6>
         <figure class="figure">
         
-            <img src="static/analysis_pics/Lifestage_vs_pricePerunit.png" class="figure-img my-center rounded" alt="...">
+            <img src="static/analysis_pics/Lifestage_vs_pricePerUnit.png" class="figure-img my-center rounded" alt="...">
             <!-- <figcaption class="figure-caption my-center">A caption for the above image.</figcaption> -->
         </figure>
+        <p>
+            Mainstream customers from the "Young singles/couples" and "Midage singles/couples" are more likely to pay more per unit
+            of chips compared to Budget and Premium Customers. The differences in average price per unit isn't large so we can 
+            further analyze this using t-test to check if this difference is statistically different.
+        </p>
+        <p>
+            Using Python's ttest_ind() function, I found the t-score between mainstream customers and budget/premium customers to be
+            3 which means that the groups are threes times as different from each other. The p-value is the probability that the 
+            results from the sample data occurred by chance. We got a very low p-value which indicates that the data did not occur 
+            by chance. In this case, there is only a 1.47e-111% probability that the results from the data happened 
+            by chance.
+        </p>
+        <p>
+            The small p-value indicates that young and mid-age singles and couples are significantly higher than that of 
+            budget or premium, young and midage singles and couples
+        </p>
+
+        <h6>Find Out If A Specific Segment Tend To Buy A Particular Brand Of Chips</h6>
+        <figure class="figure">
+        
+            <img src="static/analysis_pics/BrandName_vs_PurchaseCount.png" class="figure-img my-center rounded" alt="...">
+            <figcaption class="figure-caption my-center">Number of purchases for each brand of chips from each customer segment.</figcaption>
+        </figure>
+
+
 
 
 
