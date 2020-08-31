@@ -89,7 +89,7 @@
                       <th>TOT SALES</th>
                     </tr>
                   </thead>
-                  <tbody>
+                  <tbody style="text-align: center">
                     <tr>
                       <th>0</th>
                       <td>0</td>
@@ -193,7 +193,7 @@
                 <th>CUSTOMER SEGMENTS</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody style="text-align: center;">
               <tr>
                 <th>0</th>
                 <td>1000</td>
@@ -316,7 +316,7 @@
         </p>
         <br>
         
-        <h6>Average Price Per Unit For Each Customer Segment</h6>
+        <h6 id="price-unit-graph">Average Price Per Unit For Each Customer Segment</h6>
         <figure class="figure">
         
             <img src="static/analysis_pics/Lifestage_vs_pricePerUnit.png" class="figure-img my-center rounded" alt="...">
@@ -331,7 +331,7 @@
             Using Python's ttest_ind() function, I found the t-score between mainstream customers and budget/premium customers to be
             3 which means that the groups are threes times as different from each other. The p-value is the probability that the 
             results from the sample data occurred by chance. We got a very low p-value which indicates that the data did not occur 
-            by chance. In this case, there is only a 1.47e-111% probability that the results from the data happened 
+            by chance. In this case, there is only a 1.47 x 10e-109 % probability that the results from the data happened 
             by chance.
         </p>
         <p>
@@ -342,22 +342,632 @@
         <h6>Find Out If A Specific Segment Tend To Buy A Particular Brand Of Chips</h6>
         <figure class="figure">
         
-            <img src="static/analysis_pics/BrandName_vs_PurchaseCount.png" class="figure-img my-center rounded" alt="...">
+            <img src="static/analysis_pics/purchase_trend_by_brand.png" class="figure-img my-center rounded" alt="...">
             <figcaption class="figure-caption my-center">Number of purchases for each brand of chips from each customer segment.</figcaption>
         </figure>
+        <p> 
+            This graph describes the popularity of each brand within the mainstream, young singles/couples segment. We can see that 
+            Kettle, Smiths, and Doritos are the most popular brand choice. I then want to see if there are any patterns within 
+            consumers' purchase behavior.       
+            In other words, if a customer buys chips from the "Kettle" brand, what would be the likelihood that he/she buys 
+            "Smiths" at the same time?
+    
+        </p>
+        <p>
+            I will identify any patterns in the purchasing behavior using the <i>Affinity Analysis</i>. I chose this method because
+            this type of analysis works great on transaction data. For this analysis, I will foucs only on the (Mainstream, Young 
+            Singles/Couples) customers because they are one of the top contributors to total sales. After the analysis, 
+            we could decide whether to retain or further increase sales for this segment. 
+        </p>
+        <br>
+        <br>
+
+        <div style='width:100%;overflow:scroll'>
+            <!-- height: 400px; overflow:scroll -->
+            <table class="table table-striped">
+            <caption>Generated rules for brands with their corresponding support, confidence, lift</caption>
+            <thead class='thead-dark'>
+                <tr style="text-align: center;">
+     
+                  <th>antecedents</th>
+                  <th>consequents</th>
+                  <th>antecedent support</th>
+                  <th>consequent support</th>
+                  <th>support</th>
+                  <th>confidence</th>
+                  <th>lift</th>
+                  <th>leverage</th>
+                  <th>conviction</th>
+                </tr>
+              </thead>
+              <tbody style="text-align: center;">
+                <tr>
+      
+                  <td>(thins)</td>
+                  <td>(kettle)</td>
+                  <td>0.136208</td>
+                  <td>0.386999</td>
+                  <td>0.051347</td>
+                  <td>0.376973</td>
+                  <td>0.974093</td>
+                  <td>-0.001366</td>
+                  <td>0.983908</td>
+                </tr>
+                <tr>
+          
+                  <td>(smiths)</td>
+                  <td>(kettle)</td>
+                  <td>0.202352</td>
+                  <td>0.386999</td>
+                  <td>0.075629</td>
+                  <td>0.373750</td>
+                  <td>0.965765</td>
+                  <td>-0.002681</td>
+                  <td>0.978844</td>
+                </tr>
+                <tr>
+           
+                  <td>(pringles)</td>
+                  <td>(kettle)</td>
+                  <td>0.255976</td>
+                  <td>0.386999</td>
+                  <td>0.091564</td>
+                  <td>0.357708</td>
+                  <td>0.924312</td>
+                  <td>-0.007498</td>
+                  <td>0.954396</td>
+                </tr>
+                <tr>
+        
+                  <td>(doritos)</td>
+                  <td>(kettle)</td>
+                  <td>0.260402</td>
+                  <td>0.386999</td>
+                  <td>0.090047</td>
+                  <td>0.345799</td>
+                  <td>0.893540</td>
+                  <td>-0.010729</td>
+                  <td>0.937023</td>
+                </tr>
+                <tr>
+       
+                  <td>(smiths)</td>
+                  <td>(doritos)</td>
+                  <td>0.202352</td>
+                  <td>0.260402</td>
+                  <td>0.050967</td>
+                  <td>0.251875</td>
+                  <td>0.967254</td>
+                  <td>-0.001725</td>
+                  <td>0.988602</td>
+                </tr>
+                <tr>
+         
+                  <td>(pringles)</td>
+                  <td>(doritos)</td>
+                  <td>0.255976</td>
+                  <td>0.260402</td>
+                  <td>0.062603</td>
+                  <td>0.244565</td>
+                  <td>0.939183</td>
+                  <td>-0.004054</td>
+                  <td>0.979036</td>
+                </tr>
+                <tr>
+      
+                  <td>(doritos)</td>
+                  <td>(pringles)</td>
+                  <td>0.260402</td>
+                  <td>0.255976</td>
+                  <td>0.062603</td>
+                  <td>0.240408</td>
+                  <td>0.939183</td>
+                  <td>-0.004054</td>
+                  <td>0.979505</td>
+                </tr>
+                <tr>
+          
+                  <td>(kettle)</td>
+                  <td>(pringles)</td>
+                  <td>0.386999</td>
+                  <td>0.255976</td>
+                  <td>0.091564</td>
+                  <td>0.236601</td>
+                  <td>0.924312</td>
+                  <td>-0.007498</td>
+                  <td>0.974621</td>
+                </tr>
+                <tr>
+      
+                  <td>(kettle)</td>
+                  <td>(doritos)</td>
+                  <td>0.386999</td>
+                  <td>0.260402</td>
+                  <td>0.090047</td>
+                  <td>0.232680</td>
+                  <td>0.893540</td>
+                  <td>-0.010729</td>
+                  <td>0.963871</td>
+                </tr>
+                <tr>
+    
+                  <td>(doritos)</td>
+                  <td>(smiths)</td>
+                  <td>0.260402</td>
+                  <td>0.202352</td>
+                  <td>0.050967</td>
+                  <td>0.195726</td>
+                  <td>0.967254</td>
+                  <td>-0.001725</td>
+                  <td>0.991761</td>
+                </tr>
+                <tr>
+
+                  <td>(kettle)</td>
+                  <td>(smiths)</td>
+                  <td>0.386999</td>
+                  <td>0.202352</td>
+                  <td>0.075629</td>
+                  <td>0.195425</td>
+                  <td>0.965765</td>
+                  <td>-0.002681</td>
+                  <td>0.991390</td>
+                </tr>
+                <tr>
+    
+                  <td>(kettle)</td>
+                  <td>(thins)</td>
+                  <td>0.386999</td>
+                  <td>0.136208</td>
+                  <td>0.051347</td>
+                  <td>0.132680</td>
+                  <td>0.974093</td>
+                  <td>-0.001366</td>
+                  <td>0.995932</td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+        <br>
+        <p>
+            Observations
+            <ul>
+                <li>
+                    The evidence shows a < 1 Lift ratio, which means that the rules are 
+                    independent from each other, where a purchase of a brand of chips, is not a 
+                    strong indicator of the the purchase of another brand.
+                </li>
+                <li>
+                    Mainstream customers in the young singles/couples segment have low 
+                    support levels and < 50% confidence levels between different brands. This 
+                    indicates that the evidence does not support a strong purchase relationship 
+                    between different brands.
+                </li>
+                <li>
+                    I also looked at how much opportunity there is to use the popularity of 
+                    one product to drive sales of another. For instance, 3060 kettle chips were 
+                    sold but only 2059 doritos so we could drive more dorito sales through recommendations
+                </li>
+                <!-- <li>
+                    The Apriori Algorithm calculates the frequency of occurence for each brand for 
+                    the mainstream customers in the Young Singles/Couple segment which calculated to be:
+                    33.48% for Kettle, 22.66% for Doritos, 23.04% for Pringles, 20.24% for Smiths. 
+                </li> -->
+            </ul>
+        </p>
+        <br>
+        <div style='width:100%; height:400px; overflow:scroll'>
+            <table class="table table-striped">
+            <caption>Generated rules for pack size with their corresponding support, confidence, lift</caption>
+            <thead class='thead-dark'>
+                <tr style="text-align: right;">
+                  <th>antecedents</th>
+                  <th>consequents</th>
+                  <th>antecedent support</th>
+                  <th>consequent support</th>
+                  <th>support</th>
+                  <th>confidence</th>
+                  <th>lift</th>
+                  <th>leverage</th>
+                  <th>conviction</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>(165)</td>
+                  <td>(175)</td>
+                  <td>0.127861</td>
+                  <td>0.458202</td>
+                  <td>0.060073</td>
+                  <td>0.469832</td>
+                  <td>1.025382</td>
+                  <td>0.001487</td>
+                  <td>1.021937</td>
+                </tr>
+                <tr>
+                  <td>(170)</td>
+                  <td>(175)</td>
+                  <td>0.176932</td>
+                  <td>0.458202</td>
+                  <td>0.080435</td>
+                  <td>0.454610</td>
+                  <td>0.992162</td>
+                  <td>-0.000635</td>
+                  <td>0.993415</td>
+                </tr>
+                <tr>
+                  <td>(150)</td>
+                  <td>(175)</td>
+                  <td>0.313773</td>
+                  <td>0.458202</td>
+                  <td>0.137726</td>
+                  <td>0.438936</td>
+                  <td>0.957954</td>
+                  <td>-0.006045</td>
+                  <td>0.965662</td>
+                </tr>
+                <tr>
+                  <td>(134)</td>
+                  <td>(175)</td>
+                  <td>0.255976</td>
+                  <td>0.458202</td>
+                  <td>0.111167</td>
+                  <td>0.434289</td>
+                  <td>0.947811</td>
+                  <td>-0.006121</td>
+                  <td>0.957729</td>
+                </tr>
+                <tr>
+                  <td>(330)</td>
+                  <td>(175)</td>
+                  <td>0.139244</td>
+                  <td>0.458202</td>
+                  <td>0.059188</td>
+                  <td>0.425068</td>
+                  <td>0.927688</td>
+                  <td>-0.004614</td>
+                  <td>0.942370</td>
+                </tr>
+                <tr>
+                  <td>(110)</td>
+                  <td>(175)</td>
+                  <td>0.224738</td>
+                  <td>0.458202</td>
+                  <td>0.094220</td>
+                  <td>0.419246</td>
+                  <td>0.914981</td>
+                  <td>-0.008755</td>
+                  <td>0.932922</td>
+                </tr>
+                <tr>
+                  <td>(170)</td>
+                  <td>(150)</td>
+                  <td>0.176932</td>
+                  <td>0.313773</td>
+                  <td>0.054762</td>
+                  <td>0.309507</td>
+                  <td>0.986405</td>
+                  <td>-0.000755</td>
+                  <td>0.993822</td>
+                </tr>
+                <tr>
+                  <td>(175)</td>
+                  <td>(150)</td>
+                  <td>0.458202</td>
+                  <td>0.313773</td>
+                  <td>0.137726</td>
+                  <td>0.300580</td>
+                  <td>0.957954</td>
+                  <td>-0.006045</td>
+                  <td>0.981137</td>
+                </tr>
+                <tr>
+                  <td>(134)</td>
+                  <td>(150)</td>
+                  <td>0.255976</td>
+                  <td>0.313773</td>
+                  <td>0.074997</td>
+                  <td>0.292984</td>
+                  <td>0.933747</td>
+                  <td>-0.005321</td>
+                  <td>0.970597</td>
+                </tr>
+                <tr>
+                  <td>(110)</td>
+                  <td>(150)</td>
+                  <td>0.224738</td>
+                  <td>0.313773</td>
+                  <td>0.065385</td>
+                  <td>0.290940</td>
+                  <td>0.927231</td>
+                  <td>-0.005131</td>
+                  <td>0.967798</td>
+                </tr>
+                <tr>
+                  <td>(110)</td>
+                  <td>(134)</td>
+                  <td>0.224738</td>
+                  <td>0.255976</td>
+                  <td>0.057797</td>
+                  <td>0.257175</td>
+                  <td>1.004685</td>
+                  <td>0.000270</td>
+                  <td>1.001615</td>
+                </tr>
+                <tr>
+                  <td>(175)</td>
+                  <td>(134)</td>
+                  <td>0.458202</td>
+                  <td>0.255976</td>
+                  <td>0.111167</td>
+                  <td>0.242617</td>
+                  <td>0.947811</td>
+                  <td>-0.006121</td>
+                  <td>0.982362</td>
+                </tr>
+                <tr>
+                  <td>(150)</td>
+                  <td>(134)</td>
+                  <td>0.313773</td>
+                  <td>0.255976</td>
+                  <td>0.074997</td>
+                  <td>0.239017</td>
+                  <td>0.933747</td>
+                  <td>-0.005321</td>
+                  <td>0.977714</td>
+                </tr>
+                <tr>
+                  <td>(134)</td>
+                  <td>(110)</td>
+                  <td>0.255976</td>
+                  <td>0.224738</td>
+                  <td>0.057797</td>
+                  <td>0.225791</td>
+                  <td>1.004685</td>
+                  <td>0.000270</td>
+                  <td>1.001360</td>
+                </tr>
+                <tr>
+                  <td>(150)</td>
+                  <td>(110)</td>
+                  <td>0.313773</td>
+                  <td>0.224738</td>
+                  <td>0.065385</td>
+                  <td>0.208384</td>
+                  <td>0.927231</td>
+                  <td>-0.005131</td>
+                  <td>0.979341</td>
+                </tr>
+                <tr>
+                  <td>(175)</td>
+                  <td>(110)</td>
+                  <td>0.458202</td>
+                  <td>0.224738</td>
+                  <td>0.094220</td>
+                  <td>0.205631</td>
+                  <td>0.914981</td>
+                  <td>-0.008755</td>
+                  <td>0.975947</td>
+                </tr>
+                <tr>
+                  <td>(175)</td>
+                  <td>(170)</td>
+                  <td>0.458202</td>
+                  <td>0.176932</td>
+                  <td>0.080435</td>
+                  <td>0.175545</td>
+                  <td>0.992162</td>
+                  <td>-0.000635</td>
+                  <td>0.998318</td>
+                </tr>
+                <tr>
+                  <td>(150)</td>
+                  <td>(170)</td>
+                  <td>0.313773</td>
+                  <td>0.176932</td>
+                  <td>0.054762</td>
+                  <td>0.174526</td>
+                  <td>0.986405</td>
+                  <td>-0.000755</td>
+                  <td>0.997086</td>
+                </tr>
+                <tr>
+                  <td>(175)</td>
+                  <td>(165)</td>
+                  <td>0.458202</td>
+                  <td>0.127861</td>
+                  <td>0.060073</td>
+                  <td>0.131107</td>
+                  <td>1.025382</td>
+                  <td>0.001487</td>
+                  <td>1.003735</td>
+                </tr>
+                <tr>
+                  <td>(175)</td>
+                  <td>(330)</td>
+                  <td>0.458202</td>
+                  <td>0.139244</td>
+                  <td>0.059188</td>
+                  <td>0.129175</td>
+                  <td>0.927688</td>
+                  <td>-0.004614</td>
+                  <td>0.988437</td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+
+
+        <br>
+        <div style='width:100%; height: 400px; overflow:scroll'>
+            <table class="table table-striped">
+            <caption>Top five rows of the Transactions dataset (Cleaned)</caption>
+            <thead class='thead-dark'>
+                <tr style="text-align: center;">
+                  <th></th>
+                  <th>Target</th>
+                  <th>Non Target</th>
+                  <th>Affinity To Brand</th>
+                </tr>
+                <tr>
+                  <th>BRAND_NAME</th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody style="text-align: center">
+                <tr>
+                  <th>kettle</th>
+                  <td>0.196208</td>
+                  <td>0.141866</td>
+                  <td>1.383051</td>
+                </tr>
+                <tr>
+                  <th>doritos</th>
+                  <td>0.121804</td>
+                  <td>0.088172</td>
+                  <td>1.381433</td>
+                </tr>
+                <tr>
+                  <th>tostitos</th>
+                  <td>0.045555</td>
+                  <td>0.033091</td>
+                  <td>1.376669</td>
+                </tr>
+                <tr>
+                  <th>tyrrells</th>
+                  <td>0.031719</td>
+                  <td>0.023309</td>
+                  <td>1.360810</td>
+                </tr>
+                <tr>
+                  <th>twisties</th>
+                  <td>0.046016</td>
+                  <td>0.034270</td>
+                  <td>1.342751</td>
+                </tr>
+                <tr>
+                  <th>pringles</th>
+                  <td>0.118422</td>
+                  <td>0.094762</td>
+                  <td>1.249670</td>
+                </tr>
+                <tr>
+                  <th>infuzions</th>
+                  <td>0.064002</td>
+                  <td>0.052931</td>
+                  <td>1.209161</td>
+                </tr>
+                <tr>
+                  <th>cobs</th>
+                  <td>0.044274</td>
+                  <td>0.036837</td>
+                  <td>1.201892</td>
+                </tr>
+                <tr>
+                  <th>grainwaves</th>
+                  <td>0.033103</td>
+                  <td>0.029830</td>
+                  <td>1.109712</td>
+                </tr>
+                <tr>
+                  <th>thins</th>
+                  <td>0.059749</td>
+                  <td>0.055012</td>
+                  <td>1.086104</td>
+                </tr>
+                <tr>
+                  <th>cheezels</th>
+                  <td>0.017730</td>
+                  <td>0.018592</td>
+                  <td>0.953646</td>
+                </tr>
+                <tr>
+                  <th>smiths</th>
+                  <td>0.098232</td>
+                  <td>0.136802</td>
+                  <td>0.718061</td>
+                </tr>
+                <tr>
+                  <th>cheetos</th>
+                  <td>0.008506</td>
+                  <td>0.013736</td>
+                  <td>0.619283</td>
+                </tr>
+                <tr>
+                  <th>red rock deli</th>
+                  <td>0.044837</td>
+                  <td>0.078599</td>
+                  <td>0.570459</td>
+                </tr>
+                <tr>
+                  <th>natural</th>
+                  <td>0.020190</td>
+                  <td>0.036975</td>
+                  <td>0.546028</td>
+                </tr>
+                <tr>
+                  <th>french</th>
+                  <td>0.003997</td>
+                  <td>0.008047</td>
+                  <td>0.496687</td>
+                </tr>
+                <tr>
+                  <th>ccs</th>
+                  <td>0.011376</td>
+                  <td>0.025806</td>
+                  <td>0.440815</td>
+                </tr>
+                <tr>
+                  <th>sunbites</th>
+                  <td>0.006559</td>
+                  <td>0.016164</td>
+                  <td>0.405789</td>
+                </tr>
+                <tr>
+                  <th>burger</th>
+                  <td>0.003177</td>
+                  <td>0.008047</td>
+                  <td>0.394802</td>
+                </tr>
+                <tr>
+                  <th>woolworths</th>
+                  <td>0.024545</td>
+                  <td>0.067152</td>
+                  <td>0.365516</td>
+                </tr>
+              </tbody>
+            </table>
+</div>
 
 
 
 
-
+        <br>
+        <br>
+        <br>
 
 
         <p class="lead text-center">Conclusion</p>
         <hr class="my-4">
         <p>
             Sales are the highest for Budget customers in the "Older Families" segment, mainstream customers in the "young singles/couples"
-            segment, and mainstream customers from the "Retirees" segment respectively. I later found out that the high sales numbers for (Mainstream, 
-            young singles/couples) and (Mainstream, Retirees) can be explained by these segments having more customers. 
+            segment, and mainstream customers from the "Retirees" segment respectively. 
+            
+            I later found out that the high sales numbers for (Mainstream, young singles/couples) and (Mainstream, Retirees) can be explained 
+            by these segments having more customers. Mainstream customers from the young singles/couples segment are also likely to spend 
+            more per package of chips compared to other types of customers which can be seen <a href='#price-unit-graph'>here</a>
+        </p>
+        <p>
+            Using the Affinity (Market Basket) Analysis, I found out that the relationship between brands
+            and package sizes in terms of purchase habits is weak, meaning that we cannot accurately 
+            assume that a customer will purchase a specific brand based on the purchase of one 
+            brand of chips. Likewise, we cannot assume that a customer will purchase a specific 
+            package size based on the previous purchase. 
+        </p>
+        <p>
+
         </p>
 
 
@@ -375,3 +985,12 @@
      
 </body>
 </html>
+
+
+<!-- 
+<div style='width:100%; height: 400px; overflow:scroll'>
+    <table class="table table-striped">
+    <caption>Top five rows of the Transactions dataset (Cleaned)</caption>
+   
+    </table>
+</div> -->
