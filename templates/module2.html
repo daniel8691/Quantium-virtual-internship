@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Quantium Virtual Internship</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+
+    <!-- CSS only -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+<!-- JS, Popper.js, and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+<!-- scrolling navbar -->
+<!-- add after bootstrap.min.css -->
+<link
+  rel="stylesheet"
+  href="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.css"
+/>
+<!-- add after bootstrap.min.js -->
+<script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script>
+
+
+
+<style>
+    .text-center {
+        text-align:center;
+    }
+    .my-center {
+        display:block;
+        margin-left: auto;
+        margin-right: auto;
+        width:75%;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+    .another-lead {
+        font-weight:300;
+    }
+    .footer {
+        right: 5px;
+        position: fixed;
+        /* left: 5; */
+        bottom: 25px;
+        
+        background-color: black;
+        color: white;
+        text-align: center;
+        }
+</style>
+
+</head>
+<body data-spy="scroll" data-target="#toc" id="top-of-the-world">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        
+        <a class="navbar-brand" href="{{ url_for('home')}}">
+            <img src='static/site_regular_pics/quantium_logo.png' width="30" height="30">
+            Quantium
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="{{ url_for('home')}}">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('module1')}}">Module One</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('module2')}}">Module Two</a>
+            </li>
+            <!-- <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Dropdown link
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+            </li> -->
+          </ul>
+        </div>
+      </nav>
+      
+
+      <div class="jumbotron jumbotron-fluid m-xs-3 p-xs-1 m-sm-5 p-sm-5">
+        
+        <h1 class="display-4">Data Preparation And Customer Analytics</h1>
+        <br>
+        <!-- <center> -->
+        <div class='row'>
+            <div class="col-sm-6">
+                <div class="card" style="width: 80%;">
+                    <div class="card-body">
+                      <p class="card-title" style="font-size:1.8em;"><b>Table of Content</b></p>
+                      <nav id="toc" data-toggle="toc" style="text-align:left;"></nav>
+                      <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
+                      <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+                    </div>
+                  </div>
+            </div>
+            <div class="col-sm-6">
+                <br>
+                <p>
+                    The client outlined the second task which will look at the effect of product layouts in purchase behavior and sales. The client has selected three stores which have trialed the new layout for a chips category and they are stores 77, 86, and 88. The trial period was from the start of February 2019 to the end of April 2019. To measure the impact of the new store layouts on sales during the period we first need to select a control store from the dataset. Control stores will be stores that have similar performance to the trial store. The performance indicators used here will be monthly overall sales revenue, monthly number of customers, and the monthly number of transactions per customer. We should consider stores that have sales EVERY MONTH over July 2018 to June 2019.                  
+                    
+                </p>
+                <p>
+                    Using the analysis based on the three metrics mentioned, determine a suitable control store and rank how similar each potential control store is to the trial store. We can do this by working out either how correlated the store performances are, or a combination metric that considers how different each potential control store is to the trial store in every month. Once control stores are selected for each of the trial stores, assess the impact of the trial on sales. We want to check if the trial stores have significantly different results to the control stores. 
+                </p>
+                <p>
+                    Feel free to check out the codes behind this analysis
+                    <a href="" role="button" target="_blank">
+                        here</a>!
+                </p>
+            </div>
+          
+        </div>
+            
+        <!-- </center> -->
+        
+        <br>
+        <h4 class="another-lead text-center">Data Cleaning</h4>
+        <hr class="my-4">
+
+   
+     
+</body>
+</html>
