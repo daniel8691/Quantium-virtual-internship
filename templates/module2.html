@@ -24,7 +24,11 @@
 />
 <!-- add after bootstrap.min.js -->
 <script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script>
-
+<script>
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+        })
+</script>
 
 
 <style>
@@ -55,8 +59,9 @@
         text-align: center;
         }
 
-    /* allow zoom for images */
 
+    /* allow zoom for images */
+    /************************************/
     img {
     transition: -webkit-transform 0.25s ease;
     transition: transform 0.25s ease;
@@ -80,6 +85,38 @@
         transform: scale(1.5);
         
     } 
+    /************************************/
+
+
+    /* Tooltip */
+    /************************************/
+    /* Tooltip container */
+    .tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+    }
+
+    /* Tooltip text */
+    .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+    }
+
+    /* Show the tooltip text when you mouse over the tooltip container */
+    .tooltip:hover .tooltiptext {
+    visibility: visible;
+    }
+    /************************************/
 
  
     
@@ -142,29 +179,20 @@
                 <br>
                 <p>
                     The client outlined the second task which will look at the effect of product layouts 
-                    in purchase behavior and sales. The client has selected three stores which have 
-                    trialed the new layout for a chips category and they are stores 77, 86, and 88. 
-                    The trial period was from the start of February 2019 to the end of April 2019. 
-                    To measure the impact of the new store layouts on sales during the period, 
-                    we first need to select a control store from the dataset. Control stores will 
-                    be stores that have similar performance to the trial store. The performance 
-                    indicators used here will be monthly overall sales revenue, monthly 
-                    number of customers, and the monthly number of transactions per customer. 
-                    We should consider stores that have sales EVERY MONTH over July 2018 to June 2019.                  
+                    in purchase behavior and sales.                   
                     
                 </p>
                 <p>
-                    Using the analysis based on the three metrics mentioned, determine a suitable 
-                    control store and rank how similar each potential control store is to the trial store. 
-                    We can do this by working out either how correlated the store performances are, or a 
-                    combination metric that considers how different each potential control store is to the 
-                    trial store in every month. Once control stores are selected for each of the trial 
-                    stores, assess the impact of the trial on sales. We want to check if the trial stores 
-                    have significantly different results to the control stores. 
+                    This analysis will help the client gain insight into whether the new trial layouts 
+                    is effective and should be rolled out to all the clients' stores. It is important to compare stores
+                    that have similar characteristics and reject stores with differences that could skew the numbers.
+                </p>
+                <p>
+                    
                 </p>
                 <p>
                     Feel free to check out the codes behind this analysis
-                    <a href="" role="button" target="_blank">
+                    <a href="https://dataviz-class-1-dt.s3.us-east-2.amazonaws.com/module_two_experimentation_uplifttesting.html" role="button" target="_blank">
                         here</a>!
                 </p>
             </div>
@@ -181,7 +209,7 @@
             Using Python's Pandas Library, I calculated five new features that will help with this analysis:
             <ol id='performance-metrics'>
                 <li>Total Sales Per store</li>
-                <li>Number of Customer</li>
+                <li>Number of Customers</li>
                 <li>Number of Transactions Per Customer</li>
                 <li>Number of Chips Purchased per Transaction</li>
                 <li>Average Price Per Unit</li>
@@ -196,7 +224,11 @@
         <p>
             Next, I created two functions that calculates the correlation between the trial store and 
             other stores based on a single metric. The metric the user can choose from the previously 
-            mentioned <a href="#performance-metrics">5 performance metrics</a>.
+            mentioned
+            <!-- HTML to write -->
+            <span data-toggle="tooltip" title="Sales Per Store, Number of Customers, Transactions Per Customer, Number Purchased per Transaction, Average Price Per Unit"><b>5 performance metrics</b></span>.
+
+            
         </p>
         <p>
             Below is a cleaned dataframe ready to use for further analysis 
@@ -16605,17 +16637,40 @@
         <h4 class="another-lead text-center">Assessment Methodology</h4>
         <hr class="my-4">
         <p>
-            The client selected stores numbers 77, 86, and 88 as trial stores and want the control stores
+            The client has selected three stores which have 
+            trialed the new layout for a chips category and they are stores 77, 86, and 88. 
+            The trial period was from the start of February 2019 to the end of April 2019. 
+            To measure the impact of the new store layouts on sales during this period, 
+            we first need to select a control store from the dataset. Control stores will 
+            be stores that have similar performance to the trial store. The performance 
+            indicators used here will be monthly overall sales revenue, monthly 
+            number of customers, and the monthly number of transactions per customer. 
+            We should consider stores that have sales EVERY MONTH over July 2018 to June 2019.
+        </p>
+        <p>
+            We want the control stores
              for each trial store to be established stores that are the most correlated in performance to each 
              trial store. Apart from correlation, I will calculate a standardized metric based on the 
              absolute difference between trial store's performance and each control store's performance.
+             
+           
         </p>
         <p>
-            This analysis will help the client gain insight into whether the new trial layouts 
-            is effective and should be rolled out to all the clients' stores. It is important to compare stores
-            that have similar characteristics and reject stores with didderences that could skew the numbers.
+            Using the analysis based on the three metrics mentioned, I will determine a suitable 
+            control store by ranking how similar each potential control store is to the trial store. 
+            We can do this by working out either how correlated the store performances are, or a 
+            combination metric that considers how different each potential control store is to the 
+            trial store in every month.
         </p>
+        <p>
+            With the ideal store selected, I will apply a 95% confidence interval on the control stores
+            data, visualize on a graph with the trial store data, and find out whether the trial store's
+            performance is significantly different during the trial period or not. 
+        </p>
+        
+ 
 
+        <br>
 
         <h4 class="another-lead text-center">Assessment of Trial Store 77</h4>
         <hr class="my-4">
@@ -16831,12 +16886,9 @@
         <p><b>Trial Store 88 Results:</b></p>
         <p>
 
-            Similar to the result for trial store 77, the number of customers for the trial store
-            is higher than the control store for majority of the trial period up until the end of April.
-            This suggests that the trial performed in the trial store had a 
-            significant impact on increasing the number of customers. This also had a positive impact on the sales numbers
-            as we saw from <i>figure 3</i> that the trial store generated higher revenues than the control store 
-            during the trial period. 
+            We can see an increase in the number of customers within the trial period. However, we cannot tell
+            if the increase was caused by seasonality or other factors, because we don't have a similar store
+            to compare with the trial store.
             
         </p>
 
