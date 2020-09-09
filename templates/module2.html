@@ -54,6 +54,35 @@
         color: white;
         text-align: center;
         }
+        
+    /* allow zoom for images */
+
+    img {
+    transition: -webkit-transform 0.25s ease;
+    transition: transform 0.25s ease;
+    }
+
+    .left-img:active {
+        -webkit-transform: scale(2);
+        transform: scale(2) translateX(70px);
+        z-index:2;
+        position:relative;
+    }
+        
+
+    .right-img:active {
+        -webkit-transform: scale(2);
+        transform: scale(2) translateX(-70px);
+        
+    }
+    img:active {
+        -webkit-transform: scale(2);
+        transform: scale(1.5);
+        
+    } 
+
+ 
+    
 </style>
 
 </head>
@@ -125,7 +154,13 @@
                     
                 </p>
                 <p>
-                    Using the analysis based on the three metrics mentioned, determine a suitable control store and rank how similar each potential control store is to the trial store. We can do this by working out either how correlated the store performances are, or a combination metric that considers how different each potential control store is to the trial store in every month. Once control stores are selected for each of the trial stores, assess the impact of the trial on sales. We want to check if the trial stores have significantly different results to the control stores. 
+                    Using the analysis based on the three metrics mentioned, determine a suitable 
+                    control store and rank how similar each potential control store is to the trial store. 
+                    We can do this by working out either how correlated the store performances are, or a 
+                    combination metric that considers how different each potential control store is to the 
+                    trial store in every month. Once control stores are selected for each of the trial 
+                    stores, assess the impact of the trial on sales. We want to check if the trial stores 
+                    have significantly different results to the control stores. 
                 </p>
                 <p>
                     Feel free to check out the codes behind this analysis
@@ -16575,6 +16610,11 @@
              trial store. Apart from correlation, I will calculate a standardized metric based on the 
              absolute difference between trial store's performance and each control store's performance.
         </p>
+        <p>
+            This analysis will help the client gain insight into whether the new trial layouts 
+            is effective and should be rolled out to all the clients' stores. It is important to compare stores
+            that have similar characteristics and reject stores with didderences that could skew the numbers.
+        </p>
 
 
         <h4 class="another-lead text-center">Assessment of Trial Store 77</h4>
@@ -16588,13 +16628,20 @@
         </p>
         <div class='row'>
             <div class='col-sm-6'>
-                <img src="static/module2_analysis_pics/trial_control_salesPerMonth.png" style='width:100%;'>              
-
+      
+                <img class= 'left-img' src="static/module2_analysis_pics/trial_control_salesPerMonth.png" style='width:100%;'>              
+     
+      
+               
             </div>
             <div class='col-sm-6'>
-                <img src="static/module2_analysis_pics/trial_control_customersPerMonth.png" style='width:100%;'>
+               
+                <img class='right-img' src="static/module2_analysis_pics/trial_control_customersPerMonth.png" style='width:100%;'>
+      
+                     
             </div>
         </div>
+
         <br>
         <p>
             The trial period starts from February 2019 to the end of April 2019 and I will now check to see if there 
@@ -16603,7 +16650,7 @@
         </p>
         <figure class="figure">
             <img src="static/module2_analysis_pics/trail_77_salesByMonth.png" class="figure-img my-center rounded" alt="...">           
-            <figcaption class="figure-caption">Figure 1</figcaption>
+            <figcaption class="figure-caption my-center">Figure 1</figcaption>
           </figure>
         <p>
             The graph shows that the trial period for store 77 (trial store) is significantly different to its control store
@@ -16613,7 +16660,7 @@
         <p>Now assess the number of customers to see if this driver follows a similar trend as the total sales: </p>
         <figure class="figure">
             <img src="static/module2_analysis_pics/trial_77_customerByMonth.png" class="figure-img my-center rounded" alt="...">           
-            <figcaption class="figure-caption">Figure 2</figcaption>
+            <figcaption class="figure-caption my-center">Figure 2</figcaption>
           </figure>
         <p><b>Trial Store 77 Results:</b></p>
         <p>
@@ -16637,11 +16684,11 @@
         </p>
         <div class='row'>
             <div class='col-sm-6'>
-                <img src="static/module2_analysis_pics/trial_control_86_salesPerMonth.png" style='width:100%;'>              
+                <img class= 'left-img' src="static/module2_analysis_pics/trial_control_86_salesPerMonth.png" style='width:100%;'>              
 
             </div>
             <div class='col-sm-6'>
-                <img src="static/module2_analysis_pics/trial_control_86_customerPerMonth.png" style='width:100%;'>
+                <img class='right-img' src="static/module2_analysis_pics/trial_control_86_customerPerMonth.png" style='width:100%;'>
             </div>
         </div>
         <br>
@@ -16652,7 +16699,7 @@
         </p>
         <figure class="figure">
             <img src="static/module2_analysis_pics/trial_86_salesByMonth.png" class="figure-img my-center rounded" alt="...">           
-            <figcaption class="figure-caption">Figure 3</figcaption>
+            <figcaption class="figure-caption my-center">Figure 3</figcaption>
           </figure>
         <p>
             The graph shows that the trial period for store 86 (trial store) is significantly different to its control store
@@ -16662,7 +16709,7 @@
         <p>Now assess the number of customers to see if this driver follows a similar trend as the total sales: </p>
         <figure class="figure">
             <img src="static/module2_analysis_pics/trial_86_customerByMonth.png" class="figure-img my-center rounded" alt="...">           
-            <figcaption class="figure-caption">Figure 4</figcaption>
+            <figcaption class="figure-caption my-center">Figure 4</figcaption>
           </figure>
         <p><b>Trial Store 86 Results:</b></p>
         <p>
@@ -16675,33 +16722,100 @@
             
         </p>
         <br>
-        <h4 class="another-lead text-center">Assessment of Trial Store 178</h4>
+        <h4 class="another-lead text-center">Assessment of Trial Store 88</h4>
         <hr class="my-4">
         <br>
         <p>
-            I found the control store for trial store 86 to be store 233. I graphed the total
-            sales numbers and total number of customers to see how closely related the two stores are. 
-            As expected, the two stores have very similar performance in terms of sales and number of 
-            customers compared to all the other stores' performance. 
+            I found the control store for trial store 88 to be store 178. The store with the highest control score
+            does not seem very high (as shown in the table below) but we will try it anyways to see 
+            how the store with the highest control score compare to the trial store. 
         </p>
+        <div style='width:100%; overflow:scroll'>
+            <table class="table table-striped">
+                <caption>Top five stores with the highest control scores</caption>
+                  <thead class='thead-dark'>
+                    <tr style="text-align: center;">
+                      <th>trial_store</th>
+                      <th>other_stores</th>
+                      <th>corrMagAVG_sales</th>
+                      <th>corrMagAVG_customers</th>
+                      <th>control_score</th>
+                    </tr>
+                  </thead>
+                  <tbody class='text-align:center;'>
+                    <tr>
+                      <td>88</td>
+                      <td>178</td>
+                      <td>0.650803</td>
+                      <td>0.707828</td>
+                      <td>0.679316</td>
+                    </tr>
+                    <tr>
+                      <td>88</td>
+                      <td>14</td>
+                      <td>0.646064</td>
+                      <td>0.685774</td>
+                      <td>0.665919</td>
+                    </tr>
+                    <tr>
+                      <td>88</td>
+                      <td>134</td>
+                      <td>0.775084</td>
+                      <td>0.540154</td>
+                      <td>0.657619</td>
+                    </tr>
+                    <tr>
+                      <td>88</td>
+                      <td>237</td>
+                      <td>0.451974</td>
+                      <td>0.777235</td>
+                      <td>0.614604</td>
+                    </tr>
+                    <tr>
+                      <td>88</td>
+                      <td>187</td>
+                      <td>0.616752</td>
+                      <td>0.594560</td>
+                      <td>0.605656</td>
+                    </tr>
+                  </tbody>
+                </table>
+                
+        </div>
+        <br>
+        <br>
+        <p>
+            The two graphs below visualizes the relationships between the sales numbers and 
+            total number of customers for the trial and control store,
+            to see how closely related the two stores are. 
+            We can see that based on the sales and customer numbers, the two stores are not identical, which would
+            lower the integrity of the analysis. We want to use stores that are similar in characteristics and 
+            omit stores with differences that could skew the numbers. 
+        </p>
+        
+        <br>
         <div class='row'>
             <div class='col-sm-6'>
-                <img src="static/module2_analysis_pics/trial_control_86_salesPerMonth.png" style='width:100%;'>              
+                <img class= 'left-img' src="static/module2_analysis_pics/trial_control_88_salesPerMonth.png" style='width:100%;'>              
 
             </div>
             <div class='col-sm-6'>
-                <img src="static/module2_analysis_pics/trial_control_86_customerPerMonth.png" style='width:100%;'>
+                <img class= 'right-img' src="static/module2_analysis_pics/trial_control_88_customersPerMonth.png" style='width:100%;'>
             </div>
         </div>
         <br>
         <p>
+
+        </p>
+        <br>
+        <p>
             The trial period starts from February 2019 to the end of April 2019 and I will now check to see if there 
-            has been an uplift in overall chip sales during this period
+            has been an uplift in overall chip sales during this period.
 
         </p>
         <figure class="figure">
-            <img src="static/module2_analysis_pics/trial_86_salesByMonth.png" class="figure-img my-center rounded" alt="...">           
-            <figcaption class="figure-caption">Figure 3</figcaption>
+            <img src="static/module2_analysis_pics/trial_88_salesByMonth.png" class="figure-img my-center rounded" alt="...">           
+            <figcaption class="figure-caption my-center">Figure 5</figcaption>
           </figure>
         <p>
             The graph shows that the trial period for store 86 (trial store) is significantly different to its control store
@@ -16710,10 +16824,10 @@
         </p>
         <p>Now assess the number of customers to see if this driver follows a similar trend as the total sales: </p>
         <figure class="figure">
-            <img src="static/module2_analysis_pics/trial_86_customerByMonth.png" class="figure-img my-center rounded" alt="...">           
-            <figcaption class="figure-caption">Figure 4</figcaption>
+            <img src="static/module2_analysis_pics/trial_88_customerByMonth.png" class="figure-img my-center rounded" alt="...">           
+            <figcaption class="figure-caption my-center">Figure 6</figcaption>
           </figure>
-        <p><b>Trial Store 86 Results:</b></p>
+        <p><b>Trial Store 88 Results:</b></p>
         <p>
             Similar to the result for trial store 77, the number of customers for the trial store
             is higher than the control store for majority of the trial period up until the end of April.
@@ -16728,7 +16842,11 @@
 
 
 
-   
+        <a href="#top-of-the-world">
+            <button type="button" class="btn btn-dark footer">Go To Top</button>
+        </a>
      
 </body>
 </html>
+
+

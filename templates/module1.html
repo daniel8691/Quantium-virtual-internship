@@ -54,6 +54,17 @@
         color: white;
         text-align: center;
         }
+
+    /* allow zoom on images */
+    img:active {
+        -webkit-transform: scale(2);
+        transform: scale(1.5);            
+        } 
+    img {
+        transition: -webkit-transform 0.25s ease;
+        transition: transform 0.25s ease;
+        }
+
 </style>
 
 </head>
