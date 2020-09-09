@@ -64,6 +64,11 @@
         transition: -webkit-transform 0.25s ease;
         transition: transform 0.25s ease;
         }
+    .left-img:active {
+        -webkit-transform: scale(2);
+        transform: scale(1.5) translateX(56px);
+
+    }
 
 </style>
 
@@ -125,6 +130,7 @@
                 <p>
                     The tasks for this module is to conduct analysis on the client's transaction dataset and 
                     identify customer purchasing behaviors to generate insights and provide commerical recommendations.
+                    You can zoom in on any graphs by clicking on them!
                 </p>
                 <p>
                     Feel free to check out the codes behind this analysis
@@ -315,8 +321,9 @@
             data cleaning was required for the customer behavior dataset and by plotting a simple bar chart, 
             I can see that most of the customers are labelled “Mainstream” so this may be a factor to keep 
             in mind, when deciding which customer segment to focus our attention on. 
+            <br>
             <figure class="figure">
-                <img src="static/analysis_pics/customerBahavior.png" class="figure-img img-fluid rounded" alt="...">
+                <img src="static/analysis_pics/customerBahavior.png" class="left-img figure-img img-fluid rounded" alt="...">
                 <!-- <figcaption class="figure-caption">A caption for the above image.</figcaption> -->
               </figure>
         </p>
@@ -365,6 +372,7 @@
         <br>
 
         <p><b>Number of Customers In Each Customer Segment</b></p>
+        <br>
         <figure class="figure">
             <img src="static/analysis_pics/Lifestage_vs_numberOfCustomers.png" class="figure-img my-center rounded" alt="...">
             <!-- <figcaption class="figure-caption my-center">A caption for the above image.</figcaption> -->
