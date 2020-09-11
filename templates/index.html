@@ -15,9 +15,18 @@
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+<!-- icon bootstrap from fontawesome.com -->
+<script src="https://kit.fontawesome.com/589702e743.js" crossorigin="anonymous"></script>
+
 <style>
     .text-center {
         text-align:center;
+    }
+    #horizontal-list li {
+        margin:10px;
+        display:inline;
+        
     }
 
 </style>
@@ -59,8 +68,33 @@
       
       <div class="jumbotron jumbotron-fluid m-xs-3 p-xs-1 m-sm-5 p-sm-5">
         <h1 class="display-4 text-center">Quantium Virtual Internship</h1>
+        <center>
+          <ul id="horizontal-list">
+            <li>
+              <a href = "https://www.linkedin.com/in/daniel-tsai-chia/" target="_blank" style="color:inherit">
+                <i class='fab fa-linkedin' style='font-size:24px'></i>
+              </a>
+            </li>
+            <li>
+              <a href = "https://github.com/daniel8691" target="_blank" style="color:inherit">
+                <i class='fab fa-github' style='font-size:24px'></i>
+              </a>				
+            </li>
+            <!-- <li>
+              <a href = "https://www.instagram.com/daniel_tsai50/" target="_blank" style="color:inherit">
+                <i class='fab fa-instagram' style='font-size:24px'></i>
+              </a>					
+            </li> -->
+            <!-- <li>
+              <a href = "https://public.tableau.com/profile/daniel8010#!/" target="_blank" style="color:inherit">
+                <i class="fas fa-chart-bar" style='font-size:24px'></i>
+              </a>					
+            </li> -->
+          </ul>
+        </center>
+        
         <br>
-        <p class="lead">Project Description</p>
+        <p class="lead text-center">Project Description</p>
         <hr class="my-4">
         <p>
           Quantium has a partnership with a large supermarket brand for the past few years
@@ -73,6 +107,12 @@
         <p>
           My task as a data analyst is to evaluate and analyze the performance of any changes that
           the client has made and recommend whether the change has been successful.
+        </p>
+        <p>
+          Navigate through the <a href="{{ url_for('module1')}}" target="_blank">Module One</a>
+           and <a href="{{ url_for('module2')}}" target="_blank">Module Two</a> tabs at the top 
+          of the page to read up on my analysis. Feel free to zoom in on any graphs within the 
+          two pages for a closer look!
         </p>
           <br>
           <div class="container">
