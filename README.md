@@ -1,4 +1,4 @@
-# Quantium-virtual-internship
+# Trial_store_analysis
 
 Check out my full analysis [here](https://quantium-virtual-internship.herokuapp.com/module1) on Heroku!
 
